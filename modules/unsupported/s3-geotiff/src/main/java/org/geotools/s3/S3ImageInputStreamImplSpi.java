@@ -16,6 +16,10 @@
  */
 package org.geotools.s3;
 
+import javax.imageio.ImageIO;
+import javax.imageio.spi.ImageInputStreamSpi;
+import javax.imageio.spi.ServiceRegistry;
+import javax.imageio.stream.ImageInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,10 +27,6 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.imageio.spi.ImageInputStreamSpi;
-import javax.imageio.spi.ServiceRegistry;
-import javax.imageio.stream.ImageInputStream;
 
 /**
  * Implementation of an {@link ImageInputStreamSpi} for instantiating an {@link ImageInputStream}
@@ -103,7 +103,7 @@ public class S3ImageInputStreamImplSpi extends ImageInputStreamSpi {
         }
 
         try {
-            String path = (String) input;
+            String path = input.toString();
             return new S3ImageInputStreamImpl(path);
         } catch (FileNotFoundException e) {
             if (LOGGER.isLoggable(Level.FINE)) LOGGER.log(Level.FINE, e.getLocalizedMessage(), e);
