@@ -150,7 +150,6 @@ public class MaskOverviewProvider {
             // layout.getNumExternalOverviews() may return -1 when no external file is present
             numExternalOverviews =
                     layout.getNumExternalOverviews() > 0 ? layout.getNumExternalOverviews() : 0;
-            hasExternalOverviews = externalOverviewsCheck(inputFile, streamSpi, readerSpi) != null;
         } else if (!spiHelper.isMultidim()) {
             // Reading image number
             numInternalOverviews = getNumOverviews(sourceSpiProvider);
